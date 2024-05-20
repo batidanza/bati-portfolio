@@ -6,11 +6,13 @@ import ParticleComponent from '../components/interactives/audio/song-animated/ma
 import FluidComponent from '../components/interactives/audio/song-animated/main-files/FluidComponent';
 import Home from '../components/layout/home/Home';
 import InteractivesList from '../components/interactives/list/InteractivesList';
+import Magazine from '../components/magazine/main-files/Magazine';
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path='/' element={<Home />} />
+      <Route path='/magazine' element={<Magazine />} />
       <Route path="/interactives-list" element={<InteractivesList />} />
       <Route path="/print-images" element={<PrintImages />} />
       <Route path="/particle-component" element={<ParticleComponent />} />

@@ -1,6 +1,6 @@
 const fetchMedia = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/media/media`);
+      const response = await fetch(`${import.meta.env.VITE_REACT_APP_API_ENDPOINT}/media/media`);
       if (!response.ok) {
         throw new Error("Error fetching media");
       }
@@ -15,8 +15,7 @@ const fetchMedia = async () => {
   
   const getMediaByUser = async (userId) => {
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_ENDPOINT}/media/byUser/${userId}`
+      const response = await fetch(`${import.meta.env.VITE_REACT_APP_API_ENDPOINT}/media/byUser/${userId}`
       );
       const data = await response.json();
       return data;
@@ -31,7 +30,7 @@ const fetchMedia = async () => {
   
   const uploadMedia = async (formDataWithFile) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/media/upload`, {
+      const response = await fetch(`${import.meta.env.VITE_REACT_APP_API_ENDPOINT}/media/upload`, {
         method: "POST",
         body: formDataWithFile,
       });
