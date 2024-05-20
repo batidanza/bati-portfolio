@@ -4,6 +4,7 @@ import audio from "../../../../../assets/solo-brillaba99.wav";
 import { playAudio, stopAudio, requestAudioPermission } from '../helpers/AudioControls';
 import { openFullscreen } from "../../../design/image-print/helpers/HandleImageUpload";
 import Star from '../helpers/Star';
+import './SongAnimated.css'
 
 let sound;
 
@@ -24,8 +25,29 @@ const ParticleComponent = () => {
   };
 
   const setup = (p5, canvasParentRef) => {
-    p5.createCanvas(850, 650).parent(canvasParentRef);
+  // Calculate canvas dimensions
+  let canvasWidth = Math.min(window.innerWidth * 0.8, 1024); // 80% of the window width or 1024px, whichever is smaller
+  let canvasHeight = canvasWidth * (1.9 / 3);
+
+  if (window.innerWidth < 780) {
+    canvasWidth = window.innerWidth * 0.65; 
+    canvasHeight = window.innerHeight * 0.9; 
+  }
+
+  // Create canvas and set parent
+  const canvas = p5.createCanvas(canvasWidth, canvasHeight);
+  canvas.parent(canvasParentRef);
+
+  // Apply CSS styles to canvas
+  canvas.style("display", "block");
+  canvas.style("margin", "auto");
+  canvas.style("user-select", "none");
+  canvas.style("touch-action", "none");
+  canvas.style("border", "2px solid black"); 
+  canvas.style("border-radius", "10px"); 
     p5.frameRate(60);
+
+
   };
 
   const draw = (p5) => {
@@ -72,12 +94,12 @@ const ParticleComponent = () => {
   };
 
   return (
-    <div className="sketch">
+    <div className="song-animated">
       <div className="sketch-content">
         {audioPermission ? (
           <>
             <div>
-              <button className="button-full-screan" onClick={openFullscreen}>FULLSCREEN</button>
+              <button className="button-sketch" onClick={openFullscreen}>FULLSCREEN</button>
             </div>
 
             <Sketch
@@ -87,7 +109,7 @@ const ParticleComponent = () => {
             />
           </>
         ) : (
-          <button className="button-permission" onClick={handleRequestAudioPermission}>ALLOW AUDIO</button>
+          <button className="button-permisson" onClick={handleRequestAudioPermission}>ALLOW AUDIO</button>
         )}
       </div>
     </div>

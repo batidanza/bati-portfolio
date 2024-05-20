@@ -1,10 +1,10 @@
 import React from "react";
 import SketchComponent from "./ParticleComponent";
-import "./SketchStyles.css";
+import './SongAnimated.css'
 
 const RedParticleLineSketch = () => {
   return (
-    <div className="sketch">
+    <div className="song-animated">
       <SketchComponent />
     </div>
   );

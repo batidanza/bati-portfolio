@@ -3,6 +3,7 @@ import Sketch from "react-p5";
 import audio from "../../../../../assets/solo-brillaba99.wav";
 import { playAudio, stopAudio, requestAudioPermission } from '../helpers/AudioControls'; // Import the audio functions
 import { openFullscreen } from "../../../design/image-print/helpers/HandleImageUpload";
+import './SongAnimated.css'
 
 let sound;
 
@@ -19,8 +20,27 @@ const FluidComponent = () => {
   }, []);
 
   const setup = (p5, canvasParentRef) => {
-    p5.createCanvas(850, 650).parent(canvasParentRef);
+
+  let canvasWidth = Math.min(window.innerWidth * 0.8, 1024);
+  let canvasHeight = canvasWidth * (1.9 / 3);
+
+  if (window.innerWidth < 780) {
+    canvasWidth = window.innerWidth * 0.65; 
+    canvasHeight = window.innerHeight * 0.9; 
+  }
+
+  const canvas = p5.createCanvas(canvasWidth, canvasHeight);
+  canvas.parent(canvasParentRef);
+
+  canvas.style("display", "block");
+  canvas.style("margin", "auto");
+  canvas.style("user-select", "none");
+  canvas.style("touch-action", "none");
+  canvas.style("border", "2px solid black"); 
+  canvas.style("border-radius", "10px"); 
     p5.frameRate(60);
+    p5.frameRate(60);
+
 
     const newParticles = [];
     for (let i = 0; i < numParticles; i++) {
@@ -114,12 +134,12 @@ const FluidComponent = () => {
 
 
   return (
-    <div className="sketch">
+    <div className="song-animated">
       <div className="sketch-content">
         {audioPermission ? (
           <>
             <div>
-              <button className="button-full-screan" onClick={openFullscreen}>FULLSCREEN</button>
+              <button className="button-sketch" onClick={openFullscreen}>FULLSCREEN</button>
             </div>
             <Sketch
               setup={setup}
@@ -128,7 +148,7 @@ const FluidComponent = () => {
             />
           </>
         ) : (
-          <button className="button-permission" onClick={() => requestAudioPermission(sound, setAudioPermission, setAudioPlaying)}>ALLOW AUDIO</button>
+          <button className="button-permisson" onClick={() => requestAudioPermission(sound, setAudioPermission, setAudioPlaying)}>ALLOW AUDIO</button>
         )}
       </div>
     </div>
