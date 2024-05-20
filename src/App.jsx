@@ -1,10 +1,9 @@
+// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/layout/Navbar';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Navbar from './components/layout/navbar/Navbar';
 import './App.css';
-import PrintImages from './components/interactives/design/image-print/main-files/PrintImages';
-import ParticleComponent from './components/interactives/audio/song-animated/main-files/ParticleComponent';
-import FluidComponent from './components/interactives/audio/song-animated/main-files/FluidCopmonent';
+import AppRoutes from './routes/Routes';
 
 function App() {
   return (
@@ -12,11 +11,7 @@ function App() {
       <div>
         <Navbar />
         <div className="content">
-          <Routes>
-            <Route path="/print-images" element={<PrintImages />} />
-            <Route path="/particle-component" element={<ParticleComponent />} />
-            <Route path="/fluid-component" element={<FluidComponent/>} />
-          </Routes>
+          <AppRoutes />
         </div>
       </div>
     </Router>

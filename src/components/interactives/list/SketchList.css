@@ -1,0 +1,79 @@
+/* Estilos para pantallas grandes */
+.sketch-video-list {
+  width: 100%;
+  text-align: center;
+}
+
+.sketch-video-container {
+  width: 25%;
+  height: 55%;
+  margin: 10px;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  border: solid 1.5px rgb(0, 0, 0);
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sketch-video-container:hover {
+  border-color: rgb(255, 0, 0); /* Cambiamos el color del borde cuando se pasa el cursor */
+}
+
+.sketch-video-container video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+.video-title {
+  margin-top: 10px;
+  text-align: center;
+  font-family: "Array", sans-serif;
+  font-size: 1.5vw;
+}
+
+.sketch-video-list-title {
+  font-family: "Array", sans-serif;
+  font-size: 1.5vw;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+
+}
+.video-loading {
+  font-family: "Array", sans-serif;
+  display: flex;
+  justify-content: center;
+  font-size: 2vw;
+  animation: opacityAnimation 1s ease infinite alternate, colorAnimation 2s ease infinite alternate; /* Agrega una animación de opacidad */
+  text-decoration: none;
+}
+
+@keyframes opacityAnimation {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes colorAnimation {
+  0% { color: red; } /* Comienza con rojo */
+  100% { color: rgb(255, 0, 0); } /* Cambia a negro */
+}
+
+/* Estilos para dispositivos móviles */
+@media screen and (max-width: 1224px) {
+  .sketch-video-container {
+    width: 70%; /* Cambia el ancho a 100% para que los elementos se coloquen en columna */
+    height: auto; /* Elimina la altura fija para adaptarse al contenido */
+    margin: 10px auto; /* Centra los contenedores */
+  }
+
+  .video-title {
+    font-size: 4vw; /* Ajusta el tamaño del título para dispositivos móviles */
+  }
+
+  .sketch-video-list-title {
+    font-size: 3vw; /* Ajusta el tamaño del título de la lista para dispositivos móviles */
+  }
+}
