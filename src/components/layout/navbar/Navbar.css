@@ -21,10 +21,12 @@
 .navbar-toggle {
   background: none;
   border: none;
-  color: rgb(220, 220, 220);
+  color: rgb(0, 0, 0);
   font-size: 24px;
   cursor: pointer;
-  display: none; /* This will be overridden in the media query */
+  display: none;
+  font-family: "Array", sans-serif;
+  font-weight: bold;
 }
 .navbar-title {
   letter-spacing: 0.6em;
@@ -38,6 +40,17 @@
   font-size: 1.9vw;
   text-decoration: none;
   color: black;
+}
+
+.logout-button {
+  letter-spacing: 0.2em;
+  font-size: 1.9vw;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  border: none;
+  font-family: "Array", sans-serif;
+  font-weight: bold;
 }
 
 .navbar-menu {
@@ -69,8 +82,11 @@
     display: block;
   }
 
-  .navbar-center {
-    display: none;
+  .navbar-title {
+    letter-spacing: 0.6em;
+    font-size: 30px;
+    text-decoration: none;
+    color: black;
   }
 
   .navbar-menu {
@@ -80,13 +96,22 @@
     align-items: center;
     justify-content: center;
     right: 0;
-    background-color: rgb(250, 255, 250);
+    background-color: rgb(255, 255, 255);
     width: 100%;
     height: 100vh;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
   }
+  .logout-button {
+    font-size: 20px;
+  }
 
+  .nav-link {
+    letter-spacing: 0.2em;
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+  }
   .navbar-menu.open {
     transform: translateX(0);
   }

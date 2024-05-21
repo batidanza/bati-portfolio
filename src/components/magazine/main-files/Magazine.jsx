@@ -3,7 +3,6 @@ import "./Magazine.css";
 import AnimatedCollectionVisual from "../animated-collection/AnimatedCollectionVisual.jsx";
 
 const Magazine = () => {
-
   return (
     <>
       <div className="magazine">

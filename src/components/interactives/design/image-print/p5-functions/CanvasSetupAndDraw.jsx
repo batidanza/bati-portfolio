@@ -19,6 +19,7 @@ export const setup = (p5, canvasParentRef) => {
   canvas.style("touch-action", "none");
   canvas.style("border", "2px solid black"); 
   canvas.style("border-radius", "10px"); 
+  p5.textFont("Array");
 
   // Add touch event listener
   canvas.elt.addEventListener(

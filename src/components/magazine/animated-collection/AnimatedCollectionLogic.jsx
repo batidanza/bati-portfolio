@@ -1,9 +1,12 @@
-import { useState, useEffect } from 'react';
-import { useSpring } from 'react-spring';
-import { useInterval } from 'react-use';
-import { fetchMedia } from '../../../services/mediaAPI'; 
+import { useState, useEffect } from "react";
+import { useSpring } from "react-spring";
+import { useInterval } from "react-use";
+import { fetchMedia } from "../../../services/mediaAPI";
 
-import { getRandomIndexes, generateRandomPositions } from './AnimatedCollectionUtils';
+import {
+  getRandomIndexes,
+  generateRandomPositions,
+} from "./AnimatedCollectionUtils";
 
 const AnimatedCollectionLogic = () => {
   const [media, setMedia] = useState([]);
@@ -21,9 +24,9 @@ const AnimatedCollectionLogic = () => {
         setIndexes(initialIndexes);
         const initialPositions = generateRandomPositions(30);
         setPositions(initialPositions);
-        setLoading(false); 
+        setLoading(false);
       } catch (error) {
-        console.error('Error fetching artworks', error);
+        console.error("Error fetching artworks", error);
       }
     };
 

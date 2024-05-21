@@ -1,13 +1,12 @@
-/* Estilos para pantallas grandes */
 .sketch-video-list {
   width: 100%;
   text-align: center;
 }
 
 .sketch-video-container {
-  width: 25%;
-  height: 55%;
-  margin: 10px;
+  width: 20%;
+  height: 50%;
+  margin: 20px; 
   display: inline-block;
   vertical-align: top;
   position: relative;
@@ -18,7 +17,11 @@
 }
 
 .sketch-video-container:hover {
-  border-color: rgb(255, 0, 0); /* Cambiamos el color del borde cuando se pasa el cursor */
+  border-color: rgb(
+    255,
+    0,
+    0
+  ); 
 }
 
 .sketch-video-container video {
@@ -27,7 +30,6 @@
   display: block;
 }
 
-
 .video-title {
   margin-top: 10px;
   text-align: center;
@@ -35,45 +37,46 @@
   font-size: 1.5vw;
 }
 
-.sketch-video-list-title {
-  font-family: "Array", sans-serif;
-  font-size: 1.5vw;
-  margin-top: 3vh;
-  margin-bottom: 3vh;
-
-}
 .video-loading {
   font-family: "Array", sans-serif;
   display: flex;
   justify-content: center;
   font-size: 2vw;
-  animation: opacityAnimation 1s ease infinite alternate, colorAnimation 2s ease infinite alternate; /* Agrega una animación de opacidad */
+  animation: opacityAnimation 1s ease infinite alternate,
+    colorAnimation 2s ease infinite alternate; 
   text-decoration: none;
 }
 
 @keyframes opacityAnimation {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes colorAnimation {
-  0% { color: red; } /* Comienza con rojo */
-  100% { color: rgb(255, 0, 0); } /* Cambia a negro */
+  0% {
+    color: red;
+  }
+  100% {
+    color: rgb(255, 0, 0);
+  }
 }
 
-/* Estilos para dispositivos móviles */
 @media screen and (max-width: 1224px) {
   .sketch-video-container {
-    width: 70%; /* Cambia el ancho a 100% para que los elementos se coloquen en columna */
-    height: auto; /* Elimina la altura fija para adaptarse al contenido */
-    margin: 10px auto; /* Centra los contenedores */
+    width: 70%;
+    height: auto;
+    margin: 20px auto;
   }
 
   .video-title {
-    font-size: 4vw; /* Ajusta el tamaño del título para dispositivos móviles */
+    font-size: 4vw;
   }
 
   .sketch-video-list-title {
-    font-size: 3vw; /* Ajusta el tamaño del título de la lista para dispositivos móviles */
+    font-size: 3vw;
   }
 }
