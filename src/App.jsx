@@ -18,7 +18,7 @@ function App() {
 
   return (
     <UserProvider>
-      <Router>
+      <Router basename="/bati-portfolio">
         <div>
           <Navbar isLoggedIn={isLoggedIn} />
           <div className="content">
