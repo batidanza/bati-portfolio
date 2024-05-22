@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Sketch from "react-p5";
-import audio from "../../../../../assets/solo-brillaba99.wav";
+import audio from "../../../../../assets/songs-17.wav";
 import { playAudio, stopAudio, requestAudioPermission } from '../helpers/AudioControls';
 import { openFullscreen } from "../../../design/image-print/helpers/HandleImageUpload";
 import Star from '../helpers/Star';
