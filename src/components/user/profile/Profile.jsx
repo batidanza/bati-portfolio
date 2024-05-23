@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { UserContext } from "../../user/context/UserContext";
 import "./Profile.css";
-import PhotoUploader from "./PhotoUploader";
 
 
 const Profile = () => {
