@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <Link to="/" className="navbar-title">
-        HOLOGRMA
+        HOLOGRAMA
       </Link>
       <button className="navbar-toggle" onClick={handleToggle}>
         ☰

@@ -1,3 +1,8 @@
+body {
+  background-color: rgba(245, 252, 255)!important;
+}
+
+
 .title {
   font-family: "Array", sans-serif;
   font-size: 1.5vw;

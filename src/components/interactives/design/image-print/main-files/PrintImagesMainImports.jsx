@@ -3,7 +3,7 @@ import Sketch from "react-p5";
 import horseImage from "../../../../../assets/horse.png";
 import image1 from "../../../../../assets/face.png";
 import image2 from "../../../../../assets/flan.png";
-import image3 from "../../../../../assets/flan.png";
+import image3 from "../../../../../assets/feel.png";
 import image4 from "../../../../../assets/stars.png";
 import image5 from "../../../../../assets/dolphines.png";
 import './PrintImages.css'
