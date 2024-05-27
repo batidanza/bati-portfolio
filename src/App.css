@@ -1,18 +1,19 @@
 body {
-  background-color: rgba(245, 252, 255)!important;
+  background-color: rgba(245, 252, 255) !important;
+  margin: 0;
+  padding: 0;
 }
-
 
 .title {
   font-family: "Array", sans-serif;
-  font-size: 1.5vw;
+  font-size: 2vw;
   margin-top: 10vh;
+  margin-bottom: 2;
 }
 
 .sketch-container {
   display: flex;
   justify-content: center;
-  flex-direction: column;
   align-items: center;
 }
 
@@ -23,5 +24,6 @@ body {
   font-size: 2vw;
   margin-top: 40vh;
   margin-bottom: 60vh;
-  animation: opacityAnimation 1s ease infinite alternate, colorAnimation 2s ease infinite alternate; /* Agrega una animación de opacidad */
+  animation: opacityAnimation 1s ease infinite alternate,
+    colorAnimation 2s ease infinite alternate; /* Agrega una animación de opacidad */
 }

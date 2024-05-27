@@ -6,7 +6,7 @@ import image2 from "../../../../../assets/flan.png";
 import image3 from "../../../../../assets/feel.png";
 import image4 from "../../../../../assets/stars.png";
 import image5 from "../../../../../assets/dolphines.png";
-import './PrintImages.css'
+import './PrintImages.css';
 
 const PrintImagesJsx = ({
   drawImage,
@@ -34,22 +34,43 @@ const PrintImagesJsx = ({
   setup,
   draw,
 }) => {
-  
+  const [selectedImage, setSelectedImage] = React.useState(null);
+  const [selectedSize, setSelectedSize] = React.useState(size);
+
   const handleSizeChangeButton = (newSize) => {
     setSize(newSize);
+    setSelectedSize(newSize);
+  };
+
+  const handleImageSelect = (image) => {
+    setSelectedImage(image);
+    handleImageClick(
+      new window.p5(),
+      image,
+      size,
+      setUserImage,
+      imagesHistory,
+      setShowSecondInstruction,
+      setPrintedFirstImage,
+      setShowInstructions
+    );
   };
 
   return (
     <div className="draw-images">
       <h4 className="title"> PRINT IMAGES </h4>
       <div className="canvas-images-container">
-      <div className="image-sizes">
+        <div className="image-sizes">
           <p className="image-size-title"> SIZE </p>
-          <button className="control-button" onClick={() => handleSizeChangeButton(50)}>1</button>
-          <button className="control-button" onClick={() => handleSizeChangeButton(150)}>2</button>
-          <button className="control-button" onClick={() => handleSizeChangeButton(250)}>3</button>
-          <button className="control-button" onClick={() => handleSizeChangeButton(500)}>4</button>
-          <button className="control-button" onClick={() => handleSizeChangeButton(1050)}>5</button>
+          {[50, 150, 250, 500, 1050].map((s) => (
+            <button
+              key={s}
+              className={`control-button ${selectedSize === s ? 'selected' : ''}`}
+              onClick={() => handleSizeChangeButton(s)}
+            >
+              {s / 50}
+            </button>
+          ))}
           <button className="control-text" onClick={openFullscreen}>
             FULL SCREEN
           </button>
@@ -62,7 +83,7 @@ const PrintImagesJsx = ({
           >
             UNDO
           </button>
-       </div>
+        </div>
         <div className="canvas-content">
           <Sketch
             setup={(p5, canvasParentRef) => setup(p5, canvasParentRef)}
@@ -106,114 +127,18 @@ const PrintImagesJsx = ({
             }
           />
         </div>
-
-     <div className="image-column">
-          <img
-            src={horseImage}
-            alt="horse"
-            className="our-image"
-            onClick={() =>
-              handleImageClick(
-                new window.p5(),
-                horseImage,
-                size,
-                setUserImage,
-                imagesHistory,
-                setShowSecondInstruction,
-                setPrintedFirstImage,
-                setShowInstructions
-              )
-            }
-          />
-          <img
-            src={image1}
-            alt="image1"
-            className="our-image"
-            onClick={() =>
-              handleImageClick(
-                new window.p5(),
-                image1,
-                size,
-                setUserImage,
-                imagesHistory,
-                setShowSecondInstruction,
-                setPrintedFirstImage,
-                setShowInstructions
-              )
-            }
-          />
-          <img
-            src={image2}
-            alt="image2"
-            className="our-image"
-            onClick={() =>
-              handleImageClick(
-                new window.p5(),
-                image2,
-                size,
-                setUserImage,
-                imagesHistory,
-                setShowSecondInstruction,
-                setPrintedFirstImage,
-                setShowInstructions
-              )
-            }
-          />
-          <img
-            src={image3}
-            alt="image3"
-            className="our-image"
-            onClick={() =>
-              handleImageClick(
-                new window.p5(),
-                image3,
-                size,
-                setUserImage,
-                imagesHistory,
-                setShowSecondInstruction,
-                setPrintedFirstImage,
-                setShowInstructions
-              )
-            }
-          />
-          <img
-            src={image4}
-            alt="image4"
-            className="our-image"
-            onClick={() =>
-              handleImageClick(
-                new window.p5(),
-                image4,
-                size,
-                setUserImage,
-                imagesHistory,
-                setShowSecondInstruction,
-                setPrintedFirstImage,
-                setShowInstructions
-              )
-            }
-          />
-          <img
-            src={image5}
-            alt="image5"
-            className="our-image"
-            onClick={() =>
-              handleImageClick(
-                new window.p5(),
-                image5,
-                size,
-                setUserImage,
-                imagesHistory,
-                setShowSecondInstruction,
-                setPrintedFirstImage,
-                setShowInstructions
-              )
-            }
-          />
+        <div className="image-column">
+          {[horseImage, image1, image2, image3, image4, image5].map((image) => (
+            <img
+              key={image}
+              src={image}
+              alt="our-image"
+              className={`our-image ${selectedImage === image ? 'selected' : ''}`}
+              onClick={() => handleImageSelect(image)}
+            />
+          ))}
         </div>
-
-        </div>
-
+      </div>
       <div className="controls-container">
         <input
           type="file"
@@ -232,16 +157,12 @@ const PrintImagesJsx = ({
             )
           }
         />
-        <div className="buttons-draw-images">
-        </div>
       </div>
       <div className="instructions-container">
         <p>
-          Interactive Image Collage Platform <br />
           <br /><br />
           Welcome to our interactive image collage platform! How It Works
           <br />
-
           For guidance on using the platform, follow the on-screen instructions.
           These will provide helpful tips and information as you navigate the
           collage creation process.

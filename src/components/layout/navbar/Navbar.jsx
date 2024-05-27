@@ -41,11 +41,18 @@ const Navbar = () => {
             </Link>
           </li>
           {isLoggedIn() ? (
-            <li className="navbar-item" onClick={handleItemClick}>
-              <button className="logout-button" onClick={handleLogout}>
-                LOGOUT
-              </button>
-            </li>
+            <>
+              <li className="navbar-item" onClick={handleItemClick}>
+                <Link className="nav-link" to="/profile">
+                  PROFILE
+                </Link>
+              </li>
+              <li className="navbar-item" onClick={handleItemClick}>
+                <button className="logout-button" onClick={handleLogout}>
+                  LOGOUT
+                </button>
+              </li>
+            </>
           ) : (
             <li className="navbar-item" onClick={handleItemClick}>
               <Link className="nav-link" to="/login">

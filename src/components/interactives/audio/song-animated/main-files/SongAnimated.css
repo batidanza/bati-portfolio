@@ -18,9 +18,9 @@
     font-family: "Array", sans-serif;
     font-weight: bold;
     font-size: 2vw;
-    border: solid 2px black;
+    border: solid 1.5px black;
     border-radius: 5px;
-    background-color: white;
+    background-color: rgba(245, 252, 255);
     cursor: pointer;
 }
 
@@ -30,6 +30,6 @@
     font-size: 4vw;
     border: solid 2px black;
     border-radius: 5px;
-    background-color: white;
+    background-color: rgba(245, 252, 255);
     cursor: pointer;
 }

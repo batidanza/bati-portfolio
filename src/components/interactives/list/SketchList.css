@@ -17,17 +17,15 @@
 }
 
 .sketch-video-container:hover {
-  border-color: rgb(
-    255,
-    0,
-    0
-  ); 
+  background-color: rgb(17, 0, 255);
+  color: white;
 }
 
 .sketch-video-container video {
   width: 100%;
   height: auto;
   display: block;
+  pointer-events: none;
 }
 
 .video-title {
@@ -58,10 +56,10 @@
 
 @keyframes colorAnimation {
   0% {
-    color: red;
+    color: rgb(17, 0, 255);
   }
   100% {
-    color: rgb(255, 0, 0);
+    color: rgb(17, 0, 255);
   }
 }
 

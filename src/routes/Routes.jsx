@@ -12,6 +12,7 @@ import DrawComponent from "../components/interactives/design/shape-draw/DrawComp
 import Fan from "../components/interactives/artwork/Fan";
 import BackgroundSketch from "../components/interactives/artwork/BackgroundSketch";
 import AudioVisualizerComponent from "../components/interactives/audio/audio-visualizer/AudioVisualizerComponent";
+import ImageCircle from "../components/interactives/design/image-circle/ImageCircle";
 
 const AppRoutes = () => {
   return (
@@ -28,6 +29,7 @@ const AppRoutes = () => {
       <Route path="/audio-visualizer" element={<AudioVisualizerComponent />} />
       <Route path="/login" element={<Login />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/image-circle" element={<ImageCircle />} />
     </Routes>
   );
 };
