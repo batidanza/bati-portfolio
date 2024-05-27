@@ -1,68 +1,113 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { UserContext } from "../../user/context/UserContext";
+import botonHamburguesa from "../../../assets/boton-hamburguesa.png";
+import { useTranslation } from "react-i18next";
+import NavbarLanguage from "./NavbarLanguage";
 
 const Navbar = () => {
+  const { t, i18n } = useTranslation();
   const { isLoggedIn, logout } = useContext(UserContext);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isClosed, setIsClosed] = useState(true);
+  const [selectedLanguage, setSelectedLanguage] = useState("en");
+  const [selectedView, setSelectedView] = useState("/");
 
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-    console.log("Toggle button clicked. isOpen:", isOpen);
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    setSelectedLanguage(lng);
   };
 
-  const handleItemClick = () => {
-    setIsOpen(false);
+  const openNavbar = () => {
+    setIsClosed(false);
   };
 
-  const handleLogout = () => {
-    logout();
+  const toggleNavbarAndOptions = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsClosed(!isClosed);
   };
+
+  const handleOptionClick = (view) => {
+    setSelectedView(view);
+    if (window.innerWidth <= 767) {
+      setIsClosed(true);
+    }
+  };
+
+
 
   return (
-    <nav className="navbar">
-      <Link to="/" className="navbar-title">
-        HOLOGRAMA
-      </Link>
-      <button className="navbar-toggle" onClick={handleToggle}>
-        ☰
-      </button>
-      <div className={`navbar-center ${isOpen ? "open" : ""}`}>
-        <ul className={`navbar-menu ${isOpen ? "open" : ""}`}>
-          <li className="navbar-item" onClick={handleItemClick}>
-            <Link className="nav-link" to="/magazine">
-              MAGAZINE
-            </Link>
-          </li>
-          <li className="navbar-item" onClick={handleItemClick}>
-            <Link className="nav-link" to="/interactives-list">
-              INTERACTIVES
-            </Link>
-          </li>
-          {isLoggedIn() ? (
-            <>
-              <li className="navbar-item" onClick={handleItemClick}>
-                <Link className="nav-link" to="/profile">
-                  PROFILE
-                </Link>
-              </li>
-              <li className="navbar-item" onClick={handleItemClick}>
-                <button className="logout-button" onClick={handleLogout}>
-                  LOGOUT
-                </button>
-              </li>
-            </>
+    <div className={`sidebar ${isClosed ? "navbar-closed" : ""}`}>
+      <div className={`logo-class ${isClosed ? "logo-class-closed" : ""}`}>
+        <Link to="/" className="navbar-brand">
+          {isClosed ? (
+            <p className="vertical-logo">HOLOGRAMA</p>
           ) : (
-            <li className="navbar-item" onClick={handleItemClick}>
-              <Link className="nav-link" to="/login">
-                LOGIN
-              </Link>
-            </li>
+            <p className="text-logo">HOLOGRAMA</p>
           )}
-        </ul>
+        </Link>
       </div>
-    </nav>
+      <div className={`art-options ${isClosed ? "art-options-closed" : ""}`} id="artOptions">
+        {!isLoggedIn() && (
+          <>
+            <Link
+              to="/login"
+              className={`nav-link ${selectedView === "/login" ? "selected" : ""}`}
+              onClick={() => handleOptionClick("/login")}
+            >
+              {t("signIn")}
+            </Link>
+          </>
+        )}
+        <Link
+          to="/magazine"
+          className={`nav-link ${selectedView === "/magazine" ? "selected" : ""}`}
+          onClick={() => handleOptionClick("/magazine")}
+        >
+          {t("magazine")}
+        </Link>
+        <Link
+          to="/creatives"
+          className={`nav-link ${selectedView === "/creatives" ? "selected" : ""}`}
+          onClick={() => handleOptionClick("/creatives")}
+        >
+          {t("creatives")}
+        </Link>
+        <Link
+          to="/interactives-list"
+          className={`nav-link ${selectedView === "/interactives-list" ? "selected" : ""}`}
+          onClick={() => handleOptionClick("/interactives-list")}
+        >
+          {t("SketchList")}
+        </Link>
+        {isLoggedIn() && (
+          <Link to="/profile" className="nav-link" onClick={() => handleOptionClick("/profile")}>
+            {t("profile")}
+          </Link>
+        )}
+        {isLoggedIn() && (
+          <Link
+            to="/"
+            className="nav-link"
+            onClick={() => {
+              logout();
+              handleOptionClick("/");
+            }}
+          >
+            {t("logout")}
+          </Link>
+        )}
+      </div>
+      <NavbarLanguage
+        isClosed={isClosed}
+        selectedLanguage={selectedLanguage}
+        changeLanguage={changeLanguage}
+        toggleNavbarAndOptions={toggleNavbarAndOptions}
+        botonHamburguesa={botonHamburguesa}
+        openNavbar={openNavbar}
+      />
+    </div>
   );
 };
 
