@@ -6,6 +6,7 @@
   font-family: "Array", sans-serif;
   font-weight: bold;
   font-size: 2vw;
+  margin-left: 5vw;
 }
 
 .canvas-images-container {
@@ -108,10 +109,6 @@
   text-orientation: upright;
 }
 
-.selected {
-  opacity: 0.6;
-  background-color: rgb(255, 215, 235);
-}
 
 @media (min-width: 300px) and (max-width: 1000px) {
   .canvas-images-container {

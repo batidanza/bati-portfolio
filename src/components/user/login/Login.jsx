@@ -6,12 +6,21 @@ import LoginForm from "./LoginForm";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
-    username: "",
-    password: "",
+    Username: "",
+    Password: "",
   });
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({});
   const { login } = useContext(UserContext);
   const navigate = useNavigate();
+
+  const validate = () => {
+    const errors = {};
+    if (!credentials.Username) errors.Username = "Username is required.";
+    else if (credentials.Username.length < 3) errors.Username = "Username must be at least 3 characters.";
+    if (!credentials.Password) errors.Password = "Password is required.";
+    else if (credentials.Password.length < 6) errors.Password = "Password must be at least 6 characters.";
+    return errors;
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,13 +32,17 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await loginUser(credentials);
-    if (result.success) {
-      localStorage.setItem("token", result.token);
-      login(result.user);
-      navigate("/");
-    } else {
-      setError(result.error);
+    const errors = validate();
+    setErrors(errors);
+    if (Object.keys(errors).length === 0) {
+      const result = await loginUser(credentials);
+      if (result.success) {
+        localStorage.setItem("token", result.token);
+        login(result.user);
+        navigate("/");
+      } else {
+        setErrors({ general: "Login failed. Please check your username and password and try again." });
+      }
     }
   };
 
@@ -39,7 +52,7 @@ const Login = () => {
         credentials={credentials}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
-        error={error}
+        errors={errors}
       />
     </div>
   );

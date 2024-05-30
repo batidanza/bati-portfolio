@@ -33,6 +33,7 @@
   display: block;
   border: solid 1.5px;
   font-weight: bold;
+  margin-top: 2vw;
   border-radius: 2px;
 }
 
@@ -65,12 +66,18 @@
   margin-bottom: 15px;
 }
 
+.error {
+  color: red;
+  margin-top: 5px;
+}
+
+
 .my-button-form {
   font-family: "Array", sans-serif;
   font-weight: bold;
   font-size: 2vw;
   width: 100%;
-  margin-top: 2vw;
+  margin-top: 3vw;
   color: #000000ce;
   background-color: rgba(245, 252, 255);
   border: 1.5px solid #000000;

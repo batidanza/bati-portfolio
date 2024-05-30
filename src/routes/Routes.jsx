@@ -13,6 +13,8 @@ import Fan from "../components/interactives/artwork/Fan";
 import BackgroundSketch from "../components/interactives/artwork/BackgroundSketch";
 import AudioVisualizerComponent from "../components/interactives/audio/audio-visualizer/AudioVisualizerComponent";
 import ImageCircle from "../components/interactives/design/image-circle/ImageCircle";
+import Register from "../components/user/signin/Register";
+import Creatives from "../components/user/creatives/Creatives";
 
 const AppRoutes = () => {
   return (
@@ -30,6 +32,8 @@ const AppRoutes = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/image-circle" element={<ImageCircle />} />
+      <Route path="/Register" element={<Register/>} />
+      <Route path="/creatives" element={<Creatives/>} />
     </Routes>
   );
 };
