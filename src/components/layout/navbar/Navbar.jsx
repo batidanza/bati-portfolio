@@ -30,17 +30,13 @@ const Navbar = () => {
 
   const handleOptionClick = (view) => {
     setSelectedView(view);
-    if (window.innerWidth <= 767) {
-      setIsClosed(true);
-    }
+    setIsClosed(true);  // Cerrar la barra de navegación después de seleccionar una opción
   };
-
-
 
   return (
     <div className={`sidebar ${isClosed ? "navbar-closed" : ""}`}>
       <div className={`logo-class ${isClosed ? "logo-class-closed" : ""}`}>
-        <Link to="/" className="navbar-brand">
+        <Link to="/" className="navbar-brand" onClick={() => handleOptionClick("/")}>
           {isClosed ? (
             <p className="vertical-logo">HOLOGRAMA</p>
           ) : (
@@ -82,7 +78,11 @@ const Navbar = () => {
           {t("SketchList")}
         </Link>
         {isLoggedIn() && (
-          <Link to="/profile" className="nav-link" onClick={() => handleOptionClick("/profile")}>
+          <Link
+            to="/profile"
+            className={`nav-link ${selectedView === "/profile" ? "selected" : ""}`}
+            onClick={() => handleOptionClick("/profile")}
+          >
             {t("profile")}
           </Link>
         )}

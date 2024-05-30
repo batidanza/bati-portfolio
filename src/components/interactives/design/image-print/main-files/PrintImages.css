@@ -60,6 +60,16 @@
   cursor: pointer;
 }
 
+.control-button.selected {
+  opacity: 0.6;
+  background-color: rgb(255, 215, 235);
+}
+
+.our-image.selected {
+  opacity: 0.6;
+  background-color: rgb(255, 215, 235);
+}
+
 .control-text {
   border: solid 2px rgb(0, 0, 0);
   border-radius: 5px;

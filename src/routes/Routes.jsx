@@ -15,6 +15,7 @@ import AudioVisualizerComponent from "../components/interactives/audio/audio-vis
 import ImageCircle from "../components/interactives/design/image-circle/ImageCircle";
 import Register from "../components/user/signin/Register";
 import Creatives from "../components/user/creatives/Creatives";
+import CreativeDetail from "../components/user/creatives/CreativeDetail";
 
 const AppRoutes = () => {
   return (
@@ -34,6 +35,7 @@ const AppRoutes = () => {
       <Route path="/image-circle" element={<ImageCircle />} />
       <Route path="/Register" element={<Register/>} />
       <Route path="/creatives" element={<Creatives/>} />
+      <Route path="/creatives/:userId" element={<CreativeDetail/>} />
     </Routes>
   );
 };

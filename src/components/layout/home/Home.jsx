@@ -1,5 +1,5 @@
 import React from 'react';
-import videoSource from '../../../assets/draw-video.mp4';
+import videoSource from '../../../assets/sketch-ellipses-video.mp4';
 import './Home.css'; 
 
 

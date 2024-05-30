@@ -6,6 +6,7 @@ import AppRoutes from "./routes/Routes";
 import { UserProvider } from "./components/user/context/UserContext";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n";
+import Footer from "./components/layout/footer/Footer";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -26,6 +27,7 @@ function App() {
           <Navbar isLoggedIn={isLoggedIn} />
           <div className="content">
             <AppRoutes isLoggedIn={isLoggedIn} />
+            <Footer />
           </div>
         </div>
       </Router>

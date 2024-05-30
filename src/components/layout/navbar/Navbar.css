@@ -7,7 +7,7 @@
   bottom: 0;
   width: 21%;
   max-width: 300px; 
-  background-color: rgba(245, 252, 255);
+  background-color: rgb(245, 252, 255);
   border-right: 1.5px solid black;
   display: flex;
   flex-direction: column;

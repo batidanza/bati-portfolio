@@ -13,44 +13,27 @@ import horseVideo from "../../../assets/horse-sketch.mp4";
 
 const InteractivesList = () => {
   const videosData = [
-    {
-      id: 1,
-      src: drawImagesVideo,
-      title: "PRINT IMAGES",
-      path: "print-images",
-    },
-    {
-      id: 2,
-      src: soloBrillabaSketchVideo,
-      title: "SOLO BRILLABA",
-      path: "particle-component",
-    },
+    { id: 1, src: drawImagesVideo, title: "PRINT IMAGES", path: "print-images" },
+    { id: 2, src: soloBrillabaSketchVideo, title: "SOLO BRILLABA", path: "particle-component" },
     { id: 3, src: drawShapes, title: "DRAW SHAPE", path: "draw-shape" },
-    {
-      id: 4,
-      src: audioParticlesSketchVideo,
-      title: "FLUID SKETCH",
-      path: "fluid-component",
-    },
-    {
-      id: 5,
-      src: sphereImageVideo,
-      title: "SPHERE IMAGES",
-      path: "image-circle",
-    },
+    { id: 4, src: audioParticlesSketchVideo, title: "FLUID SKETCH", path: "fluid-component" },
+    { id: 5, src: sphereImageVideo, title: "SPHERE IMAGES", path: "image-circle" },
     { id: 6, src: fanVideo, title: "FAN SKETCH", path: "fan-sketch" },
     { id: 7, src: horseVideo, title: "IMAGE PARTICLE", path: "image-particle" },
-    {
-      id: 8,
-      src: audioPatch,
-      title: "AUDIO & IMAGES PATCH",
-      path: "audio-visualizer",
-    },
+    { id: 8, src: audioPatch, title: "AUDIO & IMAGES PATCH", path: "audio-visualizer" },
   ];
 
-  const [videoLoading, setVideoLoading] = useState({});
+  const [videoLoading, setVideoLoading] = useState(videosData.reduce((acc, video) => {
+    acc[video.id] = true;
+    return acc;
+  }, {}));
 
   const handleVideoLoaded = (id) => {
+    setVideoLoading((prevState) => ({ ...prevState, [id]: false }));
+  };
+
+  const handleVideoError = (id, error) => {
+    console.error(`Error loading video ${id}:`, error);
     setVideoLoading((prevState) => ({ ...prevState, [id]: false }));
   };
 
@@ -61,9 +44,9 @@ const InteractivesList = () => {
         {videosData.map((video) => (
           <div key={video.id} className="sketch-video-container">
             <Link to={`/${video.path}`}>
-              {videoLoading[video.id] ? (
-                <div className="loading">Loading...</div>
-              ) : null}
+              {videoLoading[video.id] && (
+                <div className="video-loading">Loading...</div>
+              )}
               <video
                 src={video.src}
                 autoPlay
@@ -73,7 +56,8 @@ const InteractivesList = () => {
                 disablePictureInPicture
                 controlsList="nodownload nofullscreen noremoteplayback"
                 style={{ display: videoLoading[video.id] ? "none" : "block" }}
-                onLoadedData={() => handleVideoLoaded(video.id)}
+                onCanPlayThrough={() => handleVideoLoaded(video.id)}
+                onError={(e) => handleVideoError(video.id, e)}
               />
             </Link>
             <div className="video-title">{video.title}</div>
